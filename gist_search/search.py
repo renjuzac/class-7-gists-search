@@ -11,8 +11,12 @@ def search_gists(username, description=None, file_name=None):
     # SIMPLE APPROACH
     
     if description and file_name:
-        # WRITE COMBINED LOGIC
-        continue
+        for gist in gists:
+            for file_names in gist['files']:
+                if file_name in file_names and description in gist["description"]:
+                    result.append(gist)
+                    break
+        return result
     
     if description:
         for gist in gists:

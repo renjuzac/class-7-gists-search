@@ -8,20 +8,26 @@ def search_gists(username, description=None, file_name=None):
         return
     gists = get_gists(username)
     
-    if description:
-        for gist in gists:
-            if description in gist["description"]:
-                result.append(gist)
-        return result
-
-    if file_name:
-        for gist in gists:
+    # inverse  (filter out failures and add everything remaining at end)
+    # LIMITS THE NUMBER OF PERMUTATIONS COMBINATIONS IN A POSITIVE APPROACH
+    # 
+    
+    for gist in gists:
+        if description and description not in gist["description"]:
+            continue
+        
+        if file_name:
+            found = False
             for file_names in gist['files']:
                 if file_name in file_names:
-                    print(file_name)
-                    result.append(gist)
-                    break
-        return result
+                    found = True
+            if not found :
+                continue
+    
+        result.append(gist)
+    return result
+    
+
         
         
 if __name__ == '__main__':

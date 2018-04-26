@@ -9,7 +9,7 @@ def search_gists(username, description=None, file_name=None):
     gists = get_gists(username)
     
     # inverse  (filter out failures and add everything remaining at end)
-    # LIMITS THE NUMBER OF PERMUTATIONS COMBINATIONS IN A POSITIVE APPROACH
+    # LIMITS THE NUMBER OF PERMUTATIONS COMBINATIONS as opposed to  A POSITIVE APPROACH
     # 
     
     for gist in gists:
